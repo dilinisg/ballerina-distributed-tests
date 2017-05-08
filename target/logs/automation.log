@@ -1,3 +1,0 @@
-2017-05-08 15:34:01,735 INFO  [org.wso2.carbon.automation.distributed.utills.ScriptExecutorUtil] -  Listing Docker Run Output .... [/bin/bash, /home/dilinig/poc_ballerina/gitrepo/ballerina-distributed-tests/src/test/resources/Artifacts/pattern1/deploy.sh] is: 
-2017-05-08 15:34:01,739 INFO  [org.wso2.carbon.automation.distributed.utills.ScriptExecutorUtil] - ]
-2017-05-08 15:34:01,919 INFO  [org.wso2.carbon.automation.distributed.utills.ScriptExecutorUtil] -  Listing Docker Run Output .... [/bin/bash, /home/dilinig/poc_ballerina/gitrepo/ballerina-distributed-tests/src/test/resources/Artifacts/pattern1/undeploy.sh] is: 
