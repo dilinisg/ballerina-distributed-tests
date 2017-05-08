@@ -53,7 +53,7 @@ public class BallerinaIntegrationBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.setProperty("jsonFilePath", "/home/dilinig/poc_ballerina/ballerina-distributed-tests/src/test/resources/deployment.json");
+        System.setProperty("jsonFilePath", "deployment.json");
         DeploymentDataReader dataJsonReader = new DeploymentDataReader();
         List<InstanceUrls> urlList = dataJsonReader.getInstanceUrlsList();
         for (InstanceUrls url : urlList) {
