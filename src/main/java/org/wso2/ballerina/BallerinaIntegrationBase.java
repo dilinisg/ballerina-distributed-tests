@@ -53,13 +53,13 @@ public class BallerinaIntegrationBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.setProperty("jsonFilePath", "deployment.json");
+//        System.setProperty("jsonFilePath", "deployment.json");
         DeploymentDataReader dataJsonReader = new DeploymentDataReader();
         List<InstanceUrls> urlList = dataJsonReader.getInstanceUrlsList();
         for (InstanceUrls url : urlList) {
             if (instanceMap != null) {
                 if (url.getLable().equals(instanceMap.get("ballerina"))) {
-                    ballerinaURL = getHTTPSUrl("pass-through-http", url.getHostIP(), url.getPorts(), "");
+                    ballerinaURL = getHTTPSUrl("servlet-http", url.getHostIP(), url.getPorts(), "");
                     System.out.println("BAL-URL=======" + ballerinaURL);
                 }
             }

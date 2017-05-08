@@ -1,7 +1,10 @@
 #!/bin/bash
-kubectl create -f ballerina_test_service.yaml
-kubectl create -f ballerina_test_rc.yaml
-
+prgdir=$(dirname "$0")
+script_path=$(cd "$prgdir"; pwd)
+echo "Creating the Pods!!!!"
+kubectl create -f $script_path/ballerina_test_service.yaml
+kubectl create -f $script_path/ballerina_test_rc.yaml
+sleep 10
 pods=$(kubectl get pods --output=jsonpath={.items..metadata.name})
 json='['
 for pod in $pods; do

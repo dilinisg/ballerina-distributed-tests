@@ -1,9 +1,0 @@
-[{
-  "hostIP": "192.168.48.244",
-  "lable": "ballerina-server",
-  "ports": [{
-    "protocol": "pass-through-http",
-    "port": "32013"
-  }]
-}
-]
