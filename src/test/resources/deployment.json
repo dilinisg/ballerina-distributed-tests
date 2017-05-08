@@ -1,0 +1,16 @@
+[{
+  "hostIP": "127.0.0.1",
+  "lable": "ballerina-server",
+  "ports": [{
+    "protocol": "pass-through-http",
+    "port": "40794"
+  }]
+},
+  {
+    "hostIP": "192.168.48.235",
+    "lable": "mysql-govdb",
+    "ports": [
+
+    ]
+  }
+]
