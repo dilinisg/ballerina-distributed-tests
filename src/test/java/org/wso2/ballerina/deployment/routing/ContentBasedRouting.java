@@ -16,49 +16,22 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.wso2.ballerina.BallerinaIntegrationBase;
+import org.wso2.ballerina.deployment.Base.BallerinaBaseTest;
 
-public class ContentBasedRouting extends BallerinaIntegrationBase{
-
-    private final String USER_AGENT = "Mozilla/5.0";
-    String url;
-
-    public static void main(String[] args) throws Exception {
-
-        ContentBasedRouting http = new ContentBasedRouting();
-
-        System.out.println("Testing 1 - Send Http GET request");
-        http.sendGet();
-
-        System.out.println("\nTesting 2 - Send Http POST request");
-        http.sendPost();
-
-    }
-
-    @BeforeClass(alwaysRun = true) public void initialize() throws Exception {
-        try {
-            super.init("pattern2");
-            url = super.ballerinaURL;
-            System.out.println("url===" + url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+public class ContentBasedRouting extends BallerinaBaseTest{
 
 
-    // HTTP GET request
+    // HTTP GET request. Routing messages based on the header value.
     @Test
     private void sendGet() throws Exception {
 
-        String hbrUrl = url + "/hbr";
+        String hbrUrl = ballerinaURL + "/hbr";
 
         HttpClient client = new DefaultHttpClient();
         HttpGet request = new HttpGet(hbrUrl);
 
-        // add request header
-        request.addHeader("User-Agent", USER_AGENT);
+        // add request headers
         request.addHeader("name","nyse");
 
         HttpResponse response = client.execute(request);
@@ -80,17 +53,14 @@ public class ContentBasedRouting extends BallerinaIntegrationBase{
 
     }
 
-    // HTTP POST request
+    // HTTP POST request. Routing messages based on the message content
     @Test
     private void sendPost() throws Exception {
 
-        String url = "http://localhost:40794/nyseStocks";
+        String url = ballerinaURL + "/nyseStocks";
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
-
-        // add header
-        post.setHeader("User-Agent", USER_AGENT);
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         //urlParameters.add(new BasicNameValuePair("name","nyse"));

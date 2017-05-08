@@ -28,28 +28,21 @@ import java.util.List;
 public class BallerinaIntegrationBase {
 
 
-//    private static final Log log = LogFactory.getLog(APIMIntegrationBaseTest.class);
-    protected static String ballerinaURL;
-/*    protected static String publisherURL;
-    protected static String keyManagerURL;
-    protected static String gateWayManagerURL;
-    protected static String gateWayWorkerURL;
-   *//* protected AutomationContext defaultContext, storeContext, publisherContext, keyManagerContext, gatewayContextMgt, gatewayContextWrk, backEndServer;
-    protected TestUserMode userMode;
-    protected APIMURLBean defaultUrls, storeUrls, publisherUrls, gatewayUrlsMgt, gatewayUrlsWrk, keyMangerUrl, backEndServerUrl;
-    protected User user;*/
+    private static final Log log = LogFactory.getLog(BallerinaIntegrationBase.class);
+    public static String ballerinaURL;
+
     protected HashMap<String, String> instanceMap;
 
     /**
      * This method will initialize test environment
-     * based on user mode and configuration given at automation.xml
-     *
+     * based on the configuration given at testng.xml
      */
     protected void init(String pattern) throws Exception {
         // userMode = TestUserMode.SUPER_TENANT_ADMIN;
         setURLs(pattern);
     }
 
+    //set the url's as specified in the deployment.json
     protected void setURLs(String patternName) {
 
         HashMap<String, String> instanceMap = null;
@@ -59,13 +52,13 @@ public class BallerinaIntegrationBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.setProperty("jsonFilePath","/home/dilinig/poc_ballerina/ballerina-distributed-tests/src/test/resources/deployment.json");
+        System.setProperty("jsonFilePath", "/home/dilinig/poc_ballerina/ballerina-distributed-tests/src/test/resources/deployment.json");
         DeploymentDataReader dataJsonReader = new DeploymentDataReader();
         List<InstanceUrls> urlList = dataJsonReader.getInstanceUrlsList();
         for (InstanceUrls url : urlList) {
             if (instanceMap != null) {
-                if (url.getLable().equals(instanceMap.get("ballerina"))){
-                    ballerinaURL = getHTTPSUrl("pass-through-http", url.getHostIP(), url.getPorts(),"");
+                if (url.getLable().equals(instanceMap.get("ballerina"))) {
+                    ballerinaURL = getHTTPSUrl("pass-through-http", url.getHostIP(), url.getPorts(), "");
                     System.out.println("BAL-URL=======" + ballerinaURL);
                 }
             }
@@ -84,94 +77,15 @@ public class BallerinaIntegrationBase {
         return Url;
     }
 
-    protected void setTestSuite(String testSuite) throws IOException {
-        ScriptExecutorUtil.deployScenario(testSuite);
+    //deploy environment
+    protected void setTestSuite(String pattern) throws IOException {
+        //ScriptExecutorUtil.deployScenario(pattern);
     }
 
-    protected void unSetTestSuite(String testSuite) throws Exception {
-        ScriptExecutorUtil.unDeployScenario(testSuite);
-        //gatewayWebAppUrl = gatewayUrls.getWebAppURLNhttp();
+    //undeploy environment
+    protected void unSetTestSuite(String pattern) throws Exception {
+        //ScriptExecutorUtil.unDeployScenario(pattern);
     }
-
-
-
-    /**
-     * init the object with tenant domain, user key and instance of store,publisher and gateway
-     * create context objects and construct URL bean
-     *
-     * @param domainKey - tenant domain key
-     * @param userKey   - tenant user key
-     * @throws APIManagerIntegrationTestException - if test configuration init fails
-     */
-/*    protected void init(String domainKey, String userKey) throws Exception {
-
-        try {
-            //create store server instance based configuration given at automation.xml
-            storeContext = new AutomationContext(APIMIntegrationConstants.AM_PRODUCT_GROUP_NAME,
-                    APIMIntegrationConstants.AM_STORE_INSTANCE, domainKey, userKey);
-            storeUrls = new APIMURLBean(storeContext.getContextUrls());
-
-            //create publisher server instance
-            publisherContext = new AutomationContext(APIMIntegrationConstants.AM_PRODUCT_GROUP_NAME,
-                    APIMIntegrationConstants.AM_PUBLISHER_INSTANCE, domainKey, userKey);
-            publisherUrls = new APIMURLBean(publisherContext.getContextUrls());
-
-            //create gateway server instance
-            gatewayContextMgt = new AutomationContext(APIMIntegrationConstants.AM_PRODUCT_GROUP_NAME,
-                    APIMIntegrationConstants.AM_GATEWAY_MGT_INSTANCE, domainKey, userKey);
-            gatewayUrlsMgt = new APIMURLBean(gatewayContextMgt.getContextUrls());
-
-            //            gatewayContextWrk =
-            //                    new AutomationContext(APIMIntegrationConstants.AM_PRODUCT_GROUP_NAME,
-            //                                          APIMIntegrationConstants.AM_GATEWAY_WRK_INSTANCE, domainKey, userKey);
-            //            gatewayUrlsWrk = new APIMURLBean(gatewayContextWrk.getContextUrls());
-
-            keyManagerContext = new AutomationContext(APIMIntegrationConstants.AM_PRODUCT_GROUP_NAME,
-                    APIMIntegrationConstants.AM_KEY_MANAGER_INSTANCE, domainKey, userKey);
-            keyMangerUrl = new APIMURLBean(keyManagerContext.getContextUrls());
-
-            //            backEndServer = new AutomationContext(APIMIntegrationConstants.AM_PRODUCT_GROUP_NAME,
-            //                                                  APIMIntegrationConstants.BACKEND_SERVER_INSTANCE, domainKey, userKey);
-            //            backEndServerUrl = new APIMURLBean(backEndServer.getContextUrls());
-
-            user = storeContext.getContextTenant().getContextUser();
-
-        } catch (XPathExpressionException e) {
-            log.error("Init failed", e);
-            throw new Exception("APIM test environment initialization failed", e);
-        }
-
-    }*/
-
-    /**
-     * @param automationContext - automation context instance of given server
-     * @return - created session cookie variable
-     * @throws APIManagerIntegrationTestException - Throws if creating session cookie fails
-     *//*
-    protected String createSession(AutomationContext automationContext) throws APIManagerIntegrationTestException {
-        LoginLogoutClient loginLogoutClient;
-        try {
-            loginLogoutClient = new LoginLogoutClient(automationContext);
-            return loginLogoutClient.login();
-        } catch (Exception e) {
-            log.error("session creation error", e);
-            throw new APIManagerIntegrationTestException("session creation error", e);
-        }
-    }
-*/
-
-
-   /* protected void verifyResponse(HttpResponse httpResponse) throws JSONException {
-        Assert.assertNotNull(httpResponse, "Response object is null");
-        log.info("Response Code : " + httpResponse.getResponseCode());
-        log.info("Response Message : " + httpResponse.getData());
-        Assert.assertEquals(httpResponse.getResponseCode(), HttpStatus.SC_OK, "Response code is not as expected");
-        JSONObject responseData = new JSONObject(httpResponse.getData());
-        Assert.assertFalse(responseData.getBoolean(APIMIntegrationConstants.API_RESPONSE_ELEMENT_NAME_ERROR),
-                "Error message received " + httpResponse.getData());
-
-    }*/
-
 
 
 }

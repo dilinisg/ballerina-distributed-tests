@@ -24,9 +24,8 @@
     <test name="lifecycle-pattern1" preserve-order="true" parallel="false">
 
         <classes>
-            <!--<class name="APICreationInvocationTestCase"/>-->
-            <!--<class name="org.wso2.ballerina.deployment.api.creation.ApplicationCreationTestCase"/>-->
-            <!--<class name="org.wso2.ballerina.deployment.api.creation.APIUpdateTestCase"/>-->
+            <!--<class name="BallerinaIntegrationTestCase"/>-->
+            <class name="org.wso2.ballerina.deployment.routing.ContentBasedRouting"/>
         </classes>
     </test>
 

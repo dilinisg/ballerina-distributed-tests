@@ -23,8 +23,8 @@
     <test name="lifecycle-pattern2" preserve-order="true" parallel="false">
 
         <classes>
-            <class name="org.wso2.ballerina.deployment.routing.ContentBasedRouting"/>
-            <!--<class name="ApplicationCreationTestCase"/>-->
+            <!--<class name="BallerinaIntegrationTestCase"/>-->
+            <!--<class name="org.wso2.ballerina.deployment.routing.ContentBasedRouting"/>-->
         </classes>
     </test>
 </suite>

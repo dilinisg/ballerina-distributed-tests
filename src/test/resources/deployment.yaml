@@ -9,11 +9,8 @@ deployments:
     filePath: deployment.json
     instancemap :
     -
-      store : wso2am-default
-      publisher : wso2am-default
-      keymanager : wso2am-default
-      gatewaymanager : wso2am-default
-      gatewayworker : wso2am-default
+      ballerina : ballerina-server
+
   -
     name: pattern2
     enable: true
@@ -25,7 +22,4 @@ deployments:
     instancemap :
     -
       ballerina : ballerina-server
-      publisher : wso2am-api-publisher
-      keymanager : wso2am-api-key-manager
-      gatewaymanager : wso2am-gateway-manager
-      gatewayworker : wso2am-gateway-manager
+
