@@ -18,7 +18,7 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="pattern1">
+<suite name="ballerina-pattern1">
     <parameter name="useDefaultListeners" value="false"/>
 
     <test name="lifecycle-pattern1" preserve-order="true" parallel="false">
