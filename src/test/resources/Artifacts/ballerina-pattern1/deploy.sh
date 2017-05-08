@@ -1,3 +1,4 @@
+#!/bin/bash
 kubectl create -f ballerina_test_service.yaml
 kubectl create -f ballerina_test_rc.yaml
 
