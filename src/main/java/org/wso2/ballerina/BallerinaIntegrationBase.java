@@ -12,6 +12,7 @@ import org.wso2.carbon.automation.distributed.beans.InstanceUrls;
 import org.wso2.carbon.automation.distributed.beans.Port;
 import org.wso2.carbon.automation.distributed.commons.DeploymentConfigurationReader;
 import org.wso2.carbon.automation.distributed.commons.DeploymentDataReader;
+import org.wso2.carbon.automation.distributed.extentions.DistributedPlatformExtension;
 import org.wso2.carbon.automation.distributed.utills.ScriptExecutorUtil;
 import org.wso2.carbon.automation.test.utils.http.client.HttpResponse;
 import org.wso2.carbon.integration.common.utils.LoginLogoutClient;
@@ -79,12 +80,16 @@ public class BallerinaIntegrationBase {
 
     //deploy environment
     protected void setTestSuite(String pattern) throws IOException {
-        //ScriptExecutorUtil.deployScenario(pattern);
+
+        //DistributedPlatformExtension my = new DistributedPlatformExtension();
+        //my.initiate();
+        ScriptExecutorUtil.deployScenario(pattern);
+
     }
 
     //undeploy environment
     protected void unSetTestSuite(String pattern) throws Exception {
-        //ScriptExecutorUtil.unDeployScenario(pattern);
+        ScriptExecutorUtil.unDeployScenario(pattern);
     }
 
 
