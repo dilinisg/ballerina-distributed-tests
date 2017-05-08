@@ -1,6 +1,6 @@
 deployments:
   -
-    name: pattern1
+    name: ballerina-pattern1
     enable: true
     deployscripts: deploy.sh
     repository: https://github.com/erandidesilva/ballerina-kubernetes-artifacts.git
