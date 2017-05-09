@@ -4,6 +4,7 @@ script_path=$(cd "$prgdir"; pwd)
 echo $KUBERNETES_MASTER
 echo $script_path
 echo "Creating the Pods!!!!"
+export KUBERNETES_MASTER
 kubectl create -f $script_path/ballerina_test_service.yaml
 kubectl create -f $script_path/ballerina_test_rc.yaml
 sleep 10
