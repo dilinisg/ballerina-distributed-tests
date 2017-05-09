@@ -1,24 +1,13 @@
 package org.wso2.ballerina;
 
-import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.testng.Assert;
 
 import org.wso2.carbon.automation.distributed.beans.InstanceUrls;
 import org.wso2.carbon.automation.distributed.beans.Port;
 import org.wso2.carbon.automation.distributed.commons.DeploymentConfigurationReader;
 import org.wso2.carbon.automation.distributed.commons.DeploymentDataReader;
-import org.wso2.carbon.automation.distributed.extentions.DistributedPlatformExtension;
 import org.wso2.carbon.automation.distributed.utills.ScriptExecutorUtil;
-import org.wso2.carbon.automation.test.utils.http.client.HttpResponse;
-import org.wso2.carbon.integration.common.utils.LoginLogoutClient;
-
-import javax.xml.xpath.XPathExpressionException;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;

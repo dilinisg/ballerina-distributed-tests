@@ -265,11 +265,6 @@
             <version>${testng.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.wso2.carbon.apimgt</groupId>
-            <artifactId>org.wso2.carbon.apimgt.api</artifactId>
-            <version>${carbon.apimgt.version}</version>
-        </dependency>
         <!--<dependency>-->
         <!--<groupId>org.wso2.carbon.automationutils</groupId>-->
         <!--<artifactId>org.wso2.carbon.integration.common.utils</artifactId>-->
@@ -286,17 +281,17 @@
         <!--</exclusions>-->
         <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.wso2.carbon.registry</groupId>
-            <artifactId>org.wso2.carbon.registry.resource.stub</artifactId>
-            <version>${carbon.registry.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.wso2.carbon.registry</groupId>-->
+            <!--<artifactId>org.wso2.carbon.registry.resource.stub</artifactId>-->
+            <!--<version>${carbon.registry.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>br.eti.kinoshita</groupId>
             <artifactId>testlink-java-api</artifactId>
             <version>1.9.14-0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.wso2.carbon.automationutils</groupId>
             <artifactId>org.wso2.carbon.integration.common.utils</artifactId>
             <version>4.4.2</version>
@@ -306,14 +301,9 @@
                     <groupId>xalan</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
+
 
     <properties>
         <carbon.registry.version>4.4.8</carbon.registry.version>
