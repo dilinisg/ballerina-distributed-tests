@@ -1,7 +1,6 @@
 #!/bin/bash
 prgdir=$(dirname "$0")
 script_path=$(cd "$prgdir"; pwd)
-export KUBERNETES_MASTER=http://192.168.48.24:8080
 echo "Creating the Pods!!!!"
 kubectl create -f $script_path/ballerina_test_service.yaml
 kubectl create -f $script_path/ballerina_test_rc.yaml
